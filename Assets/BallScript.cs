@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BallScript : MonoBehaviour
 {
@@ -12,5 +14,11 @@ public class BallScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnMouseDown()
+    {
+        GetComponent<Rigidbody>().linearVelocity=new Vector3(Random.value,Random.value,Random.value);
+        Instantiate(this);
     }
 }
