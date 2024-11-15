@@ -18,7 +18,7 @@ public class BallScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GetComponent<Rigidbody>().linearVelocity=new Vector3(Random.value,Random.value,Random.value);
+        GetComponent<Rigidbody>().linearVelocity = new Vector3(Random.value,Random.value,Random.value);
         Instantiate(this);
     }
 }
