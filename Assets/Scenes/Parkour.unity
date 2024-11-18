@@ -870,6 +870,7 @@ GameObject:
   - component: {fileID: 1485547389}
   - component: {fileID: 1485547390}
   - component: {fileID: 1485547388}
+  - component: {fileID: 1485547391}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -889,16 +890,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b305a7cb4848aa89f5530d44d9f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 330585545}
-  walkSpeed: 6
-  runSpeed: 12
-  jumpPower: 30
-  gravity: 10
-  lookSpeed: 2
-  lookXLimit: 45
-  defaultHeight: 2
-  crouchHeight: 1
-  crouchSpeed: 3
 --- !u!4 &1485547389
 Transform:
   m_ObjectHideFlags: 0
@@ -941,6 +932,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1485547391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485547387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fc6e09e3e5d40d19dc88bf7d862583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  walkSpeed: 6
+  runSpeed: 12
+  jumpPower: 7
+  gravity: 10
+  lookSpeed: 2
+  lookXLimit: 45
+  defaultHeight: 2
+  crouchHeight: 1
+  crouchSpeed: 3
 --- !u!1 &1978258007
 GameObject:
   m_ObjectHideFlags: 0
