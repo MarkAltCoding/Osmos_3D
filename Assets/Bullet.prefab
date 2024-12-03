@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595aec3c8bda546faa45e8cdf756193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 3
+  maxTravelDistance: 10
 --- !u!96 &-2561279835061293092
 TrailRenderer:
   serializedVersion: 3
