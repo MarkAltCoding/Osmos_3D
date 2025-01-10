@@ -2,35 +2,44 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float maxTravelDistance; // Maximum distance the bullet can travel
-    private Vector3 startPosition; // Position where the bullet was spawned
-    private Rigidbody rb; // Reference to the Rigidbody component
+    public float maxTravelDistance;
+    public bool isEnemyBullet;
+    private Vector3 _startPosition;
 
-    void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        startPosition = transform.position; // Store the spawn position
+        _startPosition = transform.position;
     }
 
     void FixedUpdate()
     {
-        // Dynamically adjust the speed of the bullet based on the player's movement state
-        if (rb != null)
-        {
-            rb.linearVelocity = transform.forward * (PlayerMovement.isMoving ? 10f : 0.5f);
-        }
+        transform.position += transform.forward * Time.fixedDeltaTime;
 
-        // Check if the bullet has traveled the maximum distance  
-        if (Vector3.SqrMagnitude(transform.position - startPosition) >= maxTravelDistance * maxTravelDistance)  
-        {  
-            Destroy(gameObject); // Destroy the bullet  
-        }  
+        if (Vector3.Distance(transform.position, _startPosition) >= maxTravelDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        // Optional: Destroy the object hit (commented out here)
-        // Destroy(collision.gameObject);
-        Destroy(gameObject); // Destroy the bullet
+        if (isEnemyBullet && collision.gameObject.CompareTag("Player"))
+        {
+            var player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (player != null)
+            {
+                player.OnPlayerDeath(); // This should trigger the death sequence
+            }
+            Destroy(gameObject);
+        }
+        else if (!isEnemyBullet)
+        {
+            var enemy = collision.gameObject.GetComponent<EnemyMovement>();
+            if (enemy != null)
+            {
+                Destroy(collision.gameObject);
+            }
+            Destroy(gameObject);
+        }
     }
 }
